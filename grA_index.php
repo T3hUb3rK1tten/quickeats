@@ -37,31 +37,115 @@
 
 <div data-role="page" id="home">
     <div data-role="header">
-        <h1>Mobile Web App Development</h1>
+        <h1>Semester Project</h1>
     </div>
     <div data-role="content">
         <div style="text-align: center;">
-            <h2>Welcome </h2>
-            <!-- <img src="css/images/logo.png" width="200" alt="Logo"> -->
-            <!--
-            <a href="http://imgur.com/YjHtpYp"><img src="http://i.imgur.com/YjHtpYp.jpg" width="200" alt="Logo"/></a>
-            <a href="http://imgur.com/6qlaDmR"><img src="http://i.imgur.com/6qlaDmR.jpg" width="200" alt="Logo"/></a>
-            -->
+            <h2>ITSS4312: Group 3</h2>
+            <h3>Fall 2015</h3>
         </div>
-        <p style="text-align: center;">MIS4312</p>
-        <p style="text-align: center;">Mobile Web App Development</p>
+        <p style="text-align: center;">QuickEats Mobile</p>
+        <p style="text-align: center;">Description</p>
     </div>
     <div data-role="footer" data-position="fixed" data-id="nav">
         <div data-role="navbar">
             <ul>
                 <li><a href="#home" class="ui-btn-active ui-state-persist">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#project">Project</a></li>
             </ul>
         </div>
     </div>
 </div>
-
+<div data-role="page" id="team">
+    <div data-role="header">
+        <h1>The Team</h1>
+    </div>
+    <div data-role="content">
+        <ul data-role="listview">
+            <li>
+                <a href="#leader">Team Leader</a>
+            </li>
+            <li>
+                <a href="#members">Team Members</a>
+            </li>
+        </ul>
+    </div>
+    <div data-role="footer" data-position="fixed" data-id="nav">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#team" class="ui-btn-active ui-state-persist">Team</a></li>
+                <li><a href="#project">Project</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="team">
+    <div data-role="header">
+        <h1>The Team</h1>
+    </div>
+    <div data-role="content">
+        <ul data-role="listview">
+            <li>
+                <a href="#leader">Team Leader</a>
+            </li>
+            <li>
+                <a href="#members">Team Members</a>
+            </li>
+        </ul>
+    </div>
+    <div data-role="footer" data-position="fixed" data-id="nav">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#team" class="ui-btn-active ui-state-persist">Team</a></li>
+                <li><a href="#project">Project</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="leader">
+    <div data-role="header">
+        <h1>Team Leader</h1>
+    </div>
+    <div data-role="content">
+        <ul data-role="listview">
+            <li>
+                <h3>Suraiya Rahmetulla</h3>
+            </li>
+        </ul>
+    </div>
+    <div data-role="footer" data-position="fixed" data-id="nav">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#project">Project</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="project">
+    <div data-role="header">
+        <h1>The Project</h1>
+    </div>
+    <div data-role="content">
+        <div style="text-align: center;">
+            <h2>QuickEats</h2>
+        </div>
+        <p style="text-align: center;">Description</p>
+    </div>
+    <div data-role="footer" data-position="fixed" data-id="nav">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#project" class="ui-btn-active ui-state-persist">Project</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 </body>
 </html
 
