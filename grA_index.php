@@ -20,7 +20,6 @@
 </head>
 
 <body>
-444444
 <div data-role="page" id="home">
     <div data-role="header">
         <h1>Semester Project</h1>
@@ -57,13 +56,13 @@
                         <img src="about:blank"/>
                         <h3>Suraiya Rahmetulla</h3>
                         <p>
-                            Major: Informaton Technology and Systems, Emerging Media and Communication
+                            Major: Information Technology and Systems, Emerging Media and Communication
                         </p>
                         <p>
                             Contact Info: <a href="mailto:sxr131930@utdallas.edu">sxr131930@utdallas.edu</a>
                         </p>
                         <p>
-                            <strong>Responsibility: </strong>
+                            <strong>Responsibility:</strong> Team Leader
                         </p>
                     </li>
                 </ul>
@@ -82,7 +81,7 @@
                             Contact Info: <a href="mailto:exl140130@utdallas.edu">exl140130@utdallas.edu</a>
                         </p>
                         <p>
-                            <strong>Responsibility: </strong>
+                            <strong>Responsibility:</strong> Business Model Specialist
                         </p>
                     </li>
                     <li>
@@ -96,7 +95,7 @@
                             <a href="http://kelbyschuermann.com">http://kelbyschuermann.com</a>
                         </p>
                         <p>
-                            <strong>Responsibility: </strong>
+                            <strong>Responsibility:</strong> Software Developer
                         </p>
                     </li>
                     <li>
@@ -110,7 +109,7 @@
                             <a href="https://mwe.st">https://mwe.st</a>
                         </p>
                         <p>
-                            <strong>Responsibility: </strong>
+                            <strong>Responsibility:</strong> Software Developer
                         </p>
                     </li>
                     <li>
@@ -123,20 +122,20 @@
                             Contact Info: <a href="mailto:s.matttx@gmail.com">s.matttx@gmail.com</a>
                         </p>
                         <p>
-                            <strong>Responsibility: </strong>
+                            <strong>Responsibility:</strong> Steering Committee
                         </p>
                     </li>
                     <li>
                         <img src="about:blank"/>
                         <h3>Matt Lahde</h3>
-                        <p>44
+                        <p>
                             Major: Information Technology and Systems
                         </p>
                         <p>
                             Contact Info: <a href="mailto:lahdematt@gmail.com">lahdematt@gmail.com</a>
                         </p>
                         <p>
-                            <strong>Responsibility: </strong>
+                            <strong>Responsibility:</strong> Steering Committee
                         </p>
                     </li>
                 </ul>
@@ -217,7 +216,7 @@
             <li>
                 <img src="about:blank"/>
                 <h3>Matt Lahde</h3>
-                <p>44
+                <p>
                     Major: Information Technology and Systems
                 </p>
                 <p>
@@ -248,6 +247,7 @@
             <h2>QuickEats</h2>
         </div>
         <p style="text-align: center;">Description</p>
+        <a href="#" data-role="button">Launch Application</a>
     </div>
     <div data-role="footer" data-position="fixed" data-id="nav">
         <div data-role="navbar">
