@@ -30,7 +30,7 @@
             <h3>Fall 2015</h3>
         </div>
         <p style="text-align: center;">QuickEats Mobile</p>
-        <p style="text-align: center;">Description</p>
+        <p style="text-align: center;">Yelp + Tinder, connecting people with food.</p>
     </div>
     <div data-role="footer" data-position="fixed" data-id="nav">
         <div data-role="navbar">
@@ -246,7 +246,7 @@
         <div style="text-align: center;">
             <h2>QuickEats</h2>
         </div>
-        <p style="text-align: center;">Description</p>
+        <p style="text-align: center;">Connecting people with food!</p>
         <a href="#" data-role="button">Launch Application</a>
     </div>
     <div data-role="footer" data-position="fixed" data-id="nav">
