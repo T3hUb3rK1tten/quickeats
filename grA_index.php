@@ -1,19 +1,9 @@
-<?php
-/**
- * Created by JetBrains PhpStorm.
- * User: ADMIN
- * Date: 08/16/2014
- * Time: 11:45 PM
- * To change this template use File | Settings | File Templates.
- */
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" >
 
-    <title> Hello World Javascript </title>
+    <title></title>
 
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -24,17 +14,13 @@
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
-
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-
     <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-
 </head>
 
 <body>
-
+444444
 <div data-role="page" id="home">
     <div data-role="header">
         <h1>Semester Project</h1>
@@ -62,12 +48,98 @@
         <h1>The Team</h1>
     </div>
     <div data-role="content">
-        <ul data-role="listview">
+        <ul data-role="listview" data-inset="true">
             <li>
-                <a href="#leader">Team Leader</a>
+                Team Leader
+
+                <ul data-inset="true">
+                    <li>
+                        <img src="about:blank"/>
+                        <h3>Suraiya Rahmetulla</h3>
+                        <p>
+                            Major: Informaton Technology and Systems, Emerging Media and Communication
+                        </p>
+                        <p>
+                            Contact Info: <a href="mailto:sxr131930@utdallas.edu">sxr131930@utdallas.edu</a>
+                        </p>
+                        <p>
+                            <strong>Responsibility: </strong>
+                        </p>
+                    </li>
+                </ul>
             </li>
             <li>
-                <a href="#members">Team Members</a>
+                Team Members
+
+                <ul data-role="listview">
+                    <li>
+                        <img src="about:blank"/>
+                        <h3>Elizabeth Lopez</h3>
+                        <p>
+                            Major: Information Technology and Systems, Computer Engineering
+                        </p>
+                        <p>
+                            Contact Info: <a href="mailto:exl140130@utdallas.edu">exl140130@utdallas.edu</a>
+                        </p>
+                        <p>
+                            <strong>Responsibility: </strong>
+                        </p>
+                    </li>
+                    <li>
+                        <img src="about:blank"/>
+                        <h3>Kelby Schuermann</h3>
+                        <p>
+                            Major: Information Technology and Systems
+                        </p>
+                        <p>
+                            Contact Info: <a href="mailto:kelby@kelbyschuermann.com">kelby@kelbyschuermann.com</a><br />
+                            <a href="http://kelbyschuermann.com">http://kelbyschuermann.com</a>
+                        </p>
+                        <p>
+                            <strong>Responsibility: </strong>
+                        </p>
+                    </li>
+                    <li>
+                        <img src="about:blank"/>
+                        <h3>Michael West</h3>
+                        <p>
+                            Major: Information Technology and Systems
+                        </p>
+                        <p>
+                            Contact Info: <a href="mailto:michael@mwe.st">michael@mwe.st</a><br />
+                            <a href="https://mwe.st">https://mwe.st</a>
+                        </p>
+                        <p>
+                            <strong>Responsibility: </strong>
+                        </p>
+                    </li>
+                    <li>
+                        <img src="about:blank"/>
+                        <h3>Matt Smith</h3>
+                        <p>
+                            Major: Information Technology and Systems
+                        </p>
+                        <p>
+                            Contact Info: <a href="mailto:s.matttx@gmail.com">s.matttx@gmail.com</a>
+                        </p>
+                        <p>
+                            <strong>Responsibility: </strong>
+                        </p>
+                    </li>
+                    <li>
+                        <img src="about:blank"/>
+                        <h3>Matt Lahde</h3>
+                        <p>44
+                            Major: Information Technology and Systems
+                        </p>
+                        <p>
+                            Contact Info: <a href="mailto:lahdematt@gmail.com">lahdematt@gmail.com</a>
+                        </p>
+                        <p>
+                            <strong>Responsibility: </strong>
+                        </p>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
@@ -76,61 +148,6 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#team" class="ui-btn-active ui-state-persist">Team</a></li>
-                <li><a href="#project">Project</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div data-role="page" id="team">
-    <div data-role="header">
-        <h1>The Team</h1>
-    </div>
-    <div data-role="content">
-        <ul data-role="listview">
-            <li>
-                <a href="#leader">Team Leader</a>
-            </li>
-            <li>
-                <a href="#members">Team Members</a>
-            </li>
-        </ul>
-    </div>
-    <div data-role="footer" data-position="fixed" data-id="nav">
-        <div data-role="navbar">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#team" class="ui-btn-active ui-state-persist">Team</a></li>
-                <li><a href="#project">Project</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div data-role="page" id="leader" data-add-back-btn="true">
-    <div data-role="header">
-        <h1>Team Leader</h1>
-    </div>
-    <div data-role="content">
-        <ul data-role="listview">
-            <li>
-                <img src="about:blank"/>
-                <h3>Suraiya Rahmetulla</h3>
-                <p>
-                    Major:
-                </p>
-                <p>
-                    Contact Info: <a href="mailto:sxr131930@utdallas.edu">sxr131930@utdallas.edu</a>
-                </p>
-                <p>
-                    <strong>Responsibility: </strong>
-                </p>
-            </li>
-        </ul>
-    </div>
-    <div data-role="footer" data-position="fixed" data-id="nav">
-        <div data-role="navbar">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#team">Team</a></li>
                 <li><a href="#project">Project</a></li>
             </ul>
         </div>
@@ -146,7 +163,8 @@
                 <img src="about:blank"/>
                 <h3>Elizabeth Lopez</h3>
                 <p>
-                    Major:
+                    Major: Information Technology and Systems<br />
+                    Computer Engineering
                 </p>
                 <p>
                     Contact Info: <a href="mailto:exl140130@utdallas.edu">exl140130@utdallas.edu</a>
@@ -187,7 +205,7 @@
                 <img src="about:blank"/>
                 <h3>Matt Smith</h3>
                 <p>
-                    Major:
+                    Major: Information Technology and Systems
                 </p>
                 <p>
                     Contact Info: <a href="mailto:s.matttx@gmail.com">s.matttx@gmail.com</a>
@@ -200,7 +218,7 @@
                 <img src="about:blank"/>
                 <h3>Matt Lahde</h3>
                 <p>44
-                    Major:
+                    Major: Information Technology and Systems
                 </p>
                 <p>
                     Contact Info: <a href="mailto:lahdematt@gmail.com">lahdematt@gmail.com</a>
