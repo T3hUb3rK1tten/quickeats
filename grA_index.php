@@ -105,14 +105,109 @@
         </div>
     </div>
 </div>
-<div data-role="page" id="leader">
+<div data-role="page" id="leader" data-add-back-btn="true">
     <div data-role="header">
         <h1>Team Leader</h1>
     </div>
     <div data-role="content">
         <ul data-role="listview">
             <li>
+                <img src="about:blank"/>
                 <h3>Suraiya Rahmetulla</h3>
+                <p>
+                    Major:
+                </p>
+                <p>
+                    Contact Info: <a href="mailto:sxr131930@utdallas.edu">sxr131930@utdallas.edu</a>
+                </p>
+                <p>
+                    <strong>Responsibility: </strong>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <div data-role="footer" data-position="fixed" data-id="nav">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#project">Project</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="members" data-add-back-btn="true">
+    <div data-role="header">
+        <h1>Team Members</h1>
+    </div>
+    <div data-role="content">
+        <ul data-role="listview">
+            <li>
+                <img src="about:blank"/>
+                <h3>Elizabeth Lopez</h3>
+                <p>
+                    Major:
+                </p>
+                <p>
+                    Contact Info: <a href="mailto:exl140130@utdallas.edu">exl140130@utdallas.edu</a>
+                </p>
+                <p>
+                    <strong>Responsibility: </strong>
+                </p>
+            </li>
+            <li>
+                <img src="about:blank"/>
+                <h3>Kelby Schuermann</h3>
+                <p>
+                    Major: Information Technology and Systems
+                </p>
+                <p>
+                    Contact Info: <a href="mailto:kelby@kelbyschuermann.com">kelby@kelbyschuermann.com</a><br />
+                    <a href="http://kelbyschuermann.com">http://kelbyschuermann.com</a>
+                </p>
+                <p>
+                    <strong>Responsibility: </strong>
+                </p>
+            </li>
+            <li>
+                <img src="about:blank"/>
+                <h3>Michael West</h3>
+                <p>
+                    Major: Information Technology and Systems
+                </p>
+                <p>
+                    Contact Info: <a href="mailto:michael@mwe.st">michael@mwe.st</a><br />
+                    <a href="https://mwe.st">https://mwe.st</a>
+                </p>
+                <p>
+                    <strong>Responsibility: </strong>
+                </p>
+            </li>
+            <li>
+                <img src="about:blank"/>
+                <h3>Matt Smith</h3>
+                <p>
+                    Major:
+                </p>
+                <p>
+                    Contact Info: <a href="mailto:s.matttx@gmail.com">s.matttx@gmail.com</a>
+                </p>
+                <p>
+                    <strong>Responsibility: </strong>
+                </p>
+            </li>
+            <li>
+                <img src="about:blank"/>
+                <h3>Matt Lahde</h3>
+                <p>44
+                    Major:
+                </p>
+                <p>
+                    Contact Info: <a href="mailto:lahdematt@gmail.com">lahdematt@gmail.com</a>
+                </p>
+                <p>
+                    <strong>Responsibility: </strong>
+                </p>
             </li>
         </ul>
     </div>
