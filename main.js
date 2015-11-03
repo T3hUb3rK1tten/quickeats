@@ -8,7 +8,7 @@ function showbusiness(i){
 			$("#bizname").text(business.name);
 			$("#bizphone").text(business.display_phone);
 			$("#bizrating").text(business.rating);
-			$("#bizpicture").text(business.image_url)
+			$("#bizpicture").attr("src",business.image_url)
 			$("#bizaddress").text(display_address);
 			
 		}
