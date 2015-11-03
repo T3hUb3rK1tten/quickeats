@@ -1,4 +1,5 @@
 var businesses;
+var x=1;
 function showbusiness(i){
 		if(businesses.length > 0){
 			var business = businesses[i];
@@ -7,10 +8,15 @@ function showbusiness(i){
 			$("#bizname").text(business.name);
 			$("#bizphone").text(business.display_phone);
 			$("#bizrating").text(business.rating);
+			$("#bizpicture").text(business.image_url)
 			$("#bizaddress").text(display_address);
 			
 		}
 	};
+function nextbusiness(){
+    showbusiness(x);
+	x++;
+};
 $(document).ready(function() {
 	$.getJSON( "restaurants.txt", function(data) {
 		businesses = data.businesses;
