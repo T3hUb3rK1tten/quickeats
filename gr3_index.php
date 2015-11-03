@@ -161,7 +161,7 @@
             <h2>QuickEats</h2>
         </div>
         <p style="text-align: center;">Connecting people with food!</p>
-        <a href="#" data-role="button">Launch Application</a>
+        <a href="gr3_proj.php" data-role="button">Launch Application</a>
     </div>
     <div data-role="footer" data-position="fixed" data-id="nav">
         <div data-role="navbar">
