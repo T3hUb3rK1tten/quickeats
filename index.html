@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" >
+		<meta charset="UTF-8">
 
 		<title>Quick Eats</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="main.css">
 		<script src="main.js"></script>
-		<script src="main.css"></script>
 	</head>
 	
 	<body>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
-					<img class="img-responsive" id="bizpicture" />
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<div class="row">
+						<div class="col-md-12">
+							<img class="img-responsive" id="bizpicture" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<h3 id="bizname"></h3>
+							<h3 id="bizphone"></h3>
+							<h3 id="bizaddress"></h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<h3 class="bizrating">Rating:</h3>
+							<h3 class="bizrating" id="bizrating"></h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4"></div>
+						<div class="col-md-2">
+							<a class="btn btn-default" href="#buttons" role="button" onclick="nextbusiness();"><i class="fa fa-times fa-5x"></i></a>
+						</div>
+						<div class="col-md-2">
+							<a id="directionsbtn" class="btn btn-default" href="#" role="button"><i class="fa fa-heart fa-5x"></i></a>
+						</div>
+						<div class="col-md-4"></div>
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<h3 id="bizname"></h3>
-					<h3 id="bizphone"></h3>
-					<h3 id="bizaddress"></h3>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-1">
-					<h3>Rating:</h3>
-				</div>
-				<div class="col-md-1">
-					<h3 id="bizrating"></h3>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-1">
-					<a id="directionsbtn" class="btn btn-default" href="#" role="button">Directions</a>
-				</div>
-				<div class="col-md-1">
-					<a class="btn btn-default" href="#buttons" role="button" onclick="nextbusiness();">Next</a>
-				</div>
-				
+				<div class="col-md-3"></div>
 			</div>
 		</div>
 	</body>
+</html>
