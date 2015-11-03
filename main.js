@@ -18,7 +18,7 @@ function nextbusiness(){
 	x++;
 };
 $(document).ready(function() {
-	$.getJSON( "restaurants.txt", function(data) {
+	$.getJSON( "restaurants.php", function(data) {
 		businesses = data.businesses;
 		showbusiness(0);
 	});
