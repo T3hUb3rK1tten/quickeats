@@ -10,7 +10,7 @@ function showbusiness(i){
 			$("#bizrating").text(business.rating);
 			$("#bizpicture").attr("src",business.image_url)
 			$("#bizaddress").text(display_address);
-			
+			$("#directionsbtn").attr("href", "https://www.google.com/maps?hl=en&q=" + display_address);
 		}
 	};
 function nextbusiness(){
