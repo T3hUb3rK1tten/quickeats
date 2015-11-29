@@ -54,6 +54,11 @@
 .navbar-default .navbar-link:hover {
   color: #ffffff;
 }
+.btn-primary {
+	color: #ffffff;
+	background-color: #3a3736 !important;
+	border-color: #e18a27;	
+}
 
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
