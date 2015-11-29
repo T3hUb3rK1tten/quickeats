@@ -17,16 +17,16 @@
 		<nav class="navbar navbar-default navbar-static-top" role="navigation">
 		  <div class="container-fluid"> 
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed btn-primary" data-toggle="collapse" data-target="#myModal_Filters">
-					<i class="fa fa-filter fa-lg"></i>
-				</button>
-				<button type="button" class="navbar-toggle collapsed btn-primary" data-toggle="collapse" data-target="#myModal_Settings">
-					<i class="fa fa-cog fa-lg"></i>
-				</button>
+				<ul class="navbar-toggle collapsed" data-toggle="collapse">
+					<li><a class="btn-primary" href="#myModal" data-toggle="modal" data-target="#myModal_Filters"><i class="fa fa-filter"></i></a></li>
+				</ul>
+				<ul class="navbar-toggle collapsed" data-toggle="collapse">
+					<li><a class="btn-primary" href="#myModal" data-toggle="modal" data-target="#myModal_Settings"><i class="fa fa-cog"></i></a></li>
+				</ul>
 				<a class="navbar-brand" href="#">QuickEats</a>
 			</div>
 			<div class="collapse navbar-collapse" id="navCollapse">
-				<ul class="nav navbar-nav navbar-left">
+				<ul class="nav navbar-nav navbar-toggle collapsed navbar-left" data-toggle="collapse">
 					<li><a class="btn" href="#myModal" data-toggle="modal" data-target="#myModal_Filters"><i class="fa fa-filter fa-lg"></i></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
