@@ -18,10 +18,22 @@ function nextbusiness(){
     showbusiness(x);
 	x++;
 };
+var c = function(position) {
+	var lat		= position.coords.latitude,
+		longitude	= position.coords.longitude,
+		coords	= lat + ', ' + longitude;
+		alert(coords);
+};
+
 $(document).ready(function() {
 	$.getJSON( "restaurants.txt", function(data) {
 		businesses = data.businesses;
 		showbusiness(0);
+	});
+	$("#get_location").click (function(){
+		alert("called");
+		navigator.geolocation.getCurrentPosition(c);
+		return false;
 	});
 	
 });	
