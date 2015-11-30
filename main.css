@@ -75,7 +75,13 @@
 	background-color: #3a3736 !important;
 	border-color: #e18a27;	
 }
+.btn {
+	color: #ffffff;
+}
 
+.body {
+	padding-bottom: 120px;
+}
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: #ffffff;
@@ -87,4 +93,9 @@
     color: #ffffff;
     background-color: #e18a27;
   }
+}
+@media (min-width: 767px) {
+    .body {
+        padding-bottom: 70px;
+    }
 }
