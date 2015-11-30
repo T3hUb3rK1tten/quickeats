@@ -11,6 +11,7 @@ function showbusiness(i){
 			$("#bizpicture").attr("src",business.image_url)
 			$("#bizaddress").text(display_address);
 			$("#directionsbtn").attr("href", "https://www.google.com/maps?hl=en&q=" + display_address);
+			$('.restaurant-stars-rating').width(business.rating*76/5);
 		}
 	};
 function nextbusiness(){
@@ -22,4 +23,5 @@ $(document).ready(function() {
 		businesses = data.businesses;
 		showbusiness(0);
 	});
+	
 });	
