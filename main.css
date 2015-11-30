@@ -78,10 +78,6 @@
 .btn {
 	color: #ffffff;
 }
-
-.body {
-	padding-bottom: 120px;
-}
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: #ffffff;
@@ -94,8 +90,8 @@
     background-color: #e18a27;
   }
 }
-@media (min-width: 767px) {
-    .body {
+@media (min-width: 320px) {
+    body {
         padding-bottom: 70px;
     }
 }

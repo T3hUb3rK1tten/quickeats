@@ -16,7 +16,8 @@
 		
 	</head>
 	
-	<body>
+	<body onload="getZip()">
+		
 		<nav class="navbar navbar-default navbar-static-top" role="navigation">
 		  <div class="container-fluid"> 
 			<div class="navbar-header">
@@ -56,6 +57,27 @@
 				</div>
 			</div>
 		</nav>
+		<div class="modal fade" id="myModal_getZip">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">We need your location</h4>
+					</div>
+					<div class="modal-body">
+						<form id="ZipCode" class="form-inline">
+							<div class="form-group">
+								<label for="ZipCode">Zip Code</label>
+								<input type="Text" class="form-control" id="ZipCode" placeholder="Enter Zip">
+								
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" onclick=" ">Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="modal fade" id="myModal_Filters">
 		  <div class="modal-dialog">
 			<div class="modal-content">
