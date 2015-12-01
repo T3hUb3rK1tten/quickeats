@@ -59,10 +59,11 @@ if ($db->connect_errno > 0)
 $queryaddlocations = <<<SQL
 SELECT * FROM `addlocations`
 SQL;
+$queryaddlocationsresult = $db->query($queryaddlocations);
 
 // Insert all businesses into results array, we'll calculate distances and cut off later
-$queryaddlocationsresult = $db->query($queryaddlocations);
-while($row = $queryaddlocationsresult->fetch_assoc()){
+while($row = $queryaddlocationsresult->fetch_assoc())
+{
     $newbusiness = new stdClass;
     $newbusiness->name = $row['name'];
     $newbusiness->url = $row['url'];
@@ -78,7 +79,27 @@ while($row = $queryaddlocationsresult->fetch_assoc()){
     $results->businesses[] = $newbusiness;
 }
 
+// Return all rows in removelocations
+$queryremovelocations = <<<SQL
+SELECT * FROM `removelocations`
+SQL;
+$queryremovelocationsresult = $db->query($queryremovelocations);
+
+// Remove all businesses that have a matching ID in removelocations
+while($row = $queryremovelocationsresult->fetch_assoc())
+{
+    for($i = 0; $i < count($results->businesses); $i++)
+    {
+        if ($results->businesses[$i]->id == $row['locationid'])
+        {
+            unset($results->businesses[$i]);
+        }
+    }
+}
+
 print_r($results);
+
+
 
 //$business = get_business(BUSINESS_PATH . $business_id);
 
