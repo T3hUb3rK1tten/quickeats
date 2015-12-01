@@ -5,7 +5,6 @@ var zip;
 function showbusiness(i){
 	if(results.length > 0){
 		var business = results[i];
-		var business_address = business.vicinity;
 		$("#bizname").text(business.name);
 		$("#bizrating").text(business.rating);
 		$("#bizaddress").text(business.vicinity);
@@ -48,7 +47,7 @@ var locationError = function(position) {
 
 $(document).ready(function() {
 	$.getJSON( "restaurants.txt", function(data) {
-		businesses = data.businesses;
+		results = data.results;
 		showbusiness(0);
 	});
 	if ("geolocation" in navigator) {

@@ -85,7 +85,7 @@
 								<input type="text" val="" pattern="\d{5}" class="form-control" id="ZipCode" placeholder="Your ZIP" title="Please use the five digit (12345) ZIP format" required>
 								
 							</div>
-							<button type="submit" class="btn btn-primary" onclick="zipInput();">Submit</button>
+							<button type="submit" class="btn btn-primary" onclick="zipInputSubmit();">Submit</button>
 						</form>
 					</div>
 				</div>
@@ -118,6 +118,12 @@
 						$$$
 					</label>
 				</div>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox"  name="priceCheckboxes" id="priceCheckbox4" value="price4">
+						$$$$
+					</label>
+				</div>
 				<p>Distance</p>
 				<div class="checkbox">
 					<label>
@@ -134,7 +140,13 @@
 				<div class="checkbox">
 					<label>
 						<input type="checkbox" name="distanceCheckboxes" id="distanceCheckbox3" value="distance3">
-						15+ Miles
+						15 Miles
+					</label>
+				</div>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" name="distanceCheckboxes" id="distanceCheckbox4" value="distance4">
+						15 Miles
 					</label>
 				</div>
 			  </div>
@@ -153,17 +165,10 @@
 				<h4 class="modal-title">Settings</h4>
 			  </div>
 			  <div class="modal-body">
-				<form class="form-inline" onsubmit="zipInputSubmit()">
-					<div class="form-group">
-						<label for="ZipCode">Zip Code</label>
-						<input type="number" class="form-control" id="ZipCode" placeholder="Enter Zip">		
-					</div>
-					<button type="submit" class="btn btn-primary">Submit</button>
-				</form>
 				<p>About QuickEats</p>
 			  </div>
 			  <div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 				<button type="button" class="btn btn-primary">Save changes</button>
 			  </div>
 			</div>
@@ -172,14 +177,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-sm-offset-3 ">
-					<img class="img-responsive" id="bizpicture" />
+					<!--<img class="img-responsive" id="bizpicture" />-->
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left ">
 					<h3 id="bizname"></h3>
-					<img class="img-responsive" id="bizratingpic" />
-					<h3 id="bizphone"></h3>
 					<h3 id="bizaddress"></h3>
 				</div>
 			</div>
