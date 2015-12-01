@@ -8,7 +8,7 @@
  */
 function sanitize_string($value)
 {
-    return preg_replace('/[^a-zA-Z0-9 -.]+/', '', $value);
+    return preg_replace('/[^a-zA-Z0-9 _\-\.]+/', '', $value);
 }
 
 /**
