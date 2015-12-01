@@ -66,12 +66,15 @@ function loadNextPage() {
 function loadData() {
 	var options = {
 		zip: $("#ZipCode").val(),
-		latitude: usercoords.latitude,
-		longitude: usercoords.longitude,
 		minprice: $("input:checkbox[name=priceCheckboxes]:checked").first().val(),
 		maxprice: $("input:checkbox[name=priceCheckboxes]:checked").last().val(),
 		maxdistance: $("input:radio[name=distanceRadios]:checked").val()
 	};
+
+	if (usercoords) {
+		options.latitude = usercoords.latitude;
+		options.longitude = usercoords.longitude;
+	}
 
 	loadDataWithOptions(options);
 }
