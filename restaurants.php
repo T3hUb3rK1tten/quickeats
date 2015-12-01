@@ -4,8 +4,10 @@ error_reporting(E_ALL);
 
 require_once 'inc/secret.inc.php';
 require_once 'inc/sanitize.inc.php';
-require_once 'inc/yelp.inc.php';
 require_once 'inc/geo.inc.php';
+require_once 'inc/GooglePlacesClient.inc.php';
+require_once 'inc/GooglePlaces.inc.php';
+require_once 'inc/arguments.inc.php';
 
 // Connect to database
 $db = new mysqli(MYSQL_HOST, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DATABASE, MYSQL_PORT);
@@ -15,55 +17,7 @@ if ($db->connect_errno > 0)
 }
 
 // Contains user-specified data
-$arguments = array();
-
-// Override if request arguments are not proper
-if (array_key_exists('term',$_REQUEST))
-{
-    $arguments['term'] = sanitize_string($_REQUEST['term']);
-}
-
-if (array_key_exists('limit', $_REQUEST))
-{
-    $limit = sanitize_numeric($_REQUEST['limit']);
-    // Ignore if it doesn't seem numeric
-    if (is_numeric($limit))
-    {
-        $arguments['limit'] = $limit;
-    }
-}
-
-if (array_key_exists('maxdistance', $_REQUEST))
-{
-    $maxdistance = sanitize_numeric($_REQUEST['maxdistance']);
-    if (is_numeric($maxdistance))
-    {
-        // Limit from 1 to 24.855 miles, but distance to API is specified in meters
-        // We expect miles from user, convert to meters here
-        $arguments['maxdistance'] = $maxdistance * 1609.344;
-    }
-}
-
-if (array_key_exists('zip',$_REQUEST))
-{
-    $zip = sanitize_numeric($_REQUEST['zip']);
-    if (is_numeric($zip))
-    {
-        // Remove leading zeros
-        $arguments['zip'] = ltrim($zip, "0");
-    }
-}
-
-if (array_key_exists('latitude',$_REQUEST) && array_key_exists('longitude',$_REQUEST))
-{
-    $latitude = sanitize_numeric($_REQUEST['latitude']);
-    $longitude = sanitize_numeric($_REQUEST['longitude']);
-    if (is_numeric($latitude) && is_numeric($longitude))
-    {
-        $arguments['latitude'] = $latitude;
-        $arguments['longitude'] = $longitude;
-    }
-}
+$arguments = getArguments($_REQUEST);
 
 // If there is a zip but no coordinates, look up approximate coordinates from database
 if (array_key_exists('zip', $arguments) && (!array_key_exists('latitude', $arguments) || !array_key_exists(('longitude'), $arguments)))
@@ -83,21 +37,14 @@ SQL;
     $stmt->free_result();
 }
 
-// If there are coordinates but no zip
-
-print_r($arguments);
-
-// Yelp API options
-$options = array();
-$options['term'] = (array_key_exists('term', $arguments)) ? $arguments['term'] : 'food';
-$options['location'] = (array_key_exists('zip', $arguments)) ? $arguments['zip'] : 'null';
-$options['cll'] = (array_key_exists('latitude', $arguments) && array_key_exists('longitude', $arguments)) ? $arguments['latitude'] . ',' . $arguments['longitude'] : '';
-$options['limit'] = (array_key_exists('limit', $arguments)) ? min(max($arguments['limit'], 20), 1) : 20; // limited by Yelp to 20, can request another 20
-$options['maxdistance'] = (array_key_exists('maxdistance', $arguments)) ? min(max($arguments['maxdistance'], 40000), 1) : 15000; // in meters
-
-// Fetch results in JSON format
-$rawresults = request(SEARCH_PATH, $options);
-$results = json_decode($rawresults);
+// Places Search API object
+$places = new joshtronic\GooglePlaces(GOOGLE_SERVER_KEY);
+$places->location = array($arguments['latitude'], $arguments['longitude']);
+$places->radius = $arguments['maxdistance'];
+$places->types = array('restaurant', 'food');
+$places->keyword = 'food';
+$places->opennow = true;
+$search = $places->nearbySearch();
 
 // Return all rows in addlocations
 // Could have database calculate distance and return within bounds, not enough rows yet to justify duplicate code
@@ -109,19 +56,14 @@ $queryaddlocationsresult = $db->query($queryaddlocations);
 // Insert all businesses into results array, we'll calculate distances and cut off later
 while($row = $queryaddlocationsresult->fetch_assoc())
 {
-    $newbusiness = new stdClass;
-    $newbusiness->name = $row['name'];
-    $newbusiness->url = $row['url'];
-    $newbusiness->phone = $row['phone'];
-    $newbusiness->image_url = $row['imageurl'];
-    $newbusiness->location = new stdClass;
-    $newbusiness->location->display_address = array($row['address']);
-    $newbusiness->location->address = array($row['address']);
-    $newbusiness->location->coordinate = new stdClass;
-    $newbusiness->location->coordinate->latitude = array($row['latitude']);
-    $newbusiness->location->coordinate->longitude = array($row['longitude']);
-
-    $results->businesses[] = $newbusiness;
+    $newbusiness = array();
+    $newbusiness['geometry']['location']['lat'] = $row['latitude'];
+    $newbusiness['geometry']['location']['lng'] = $row['longitude'];
+    $newbusiness['place_id'] = $row['id'];
+    $newbusiness['name'] = $row['name'];
+    $newbusiness['image_url'] = $row['imageurl'];
+    $newbusiness['vicinity'] = $row['address'];
+    $search['results'][] = $newbusiness;
 }
 
 // Return all rows in removelocations
@@ -133,27 +75,28 @@ $queryremovelocationsresult = $db->query($queryremovelocations);
 // Remove all businesses that have a matching ID in removelocations
 while($row = $queryremovelocationsresult->fetch_assoc())
 {
-    for($i = 0; $i < count($results->businesses); $i++)
+    for($i = 0; $i < count($search['results']); ++$i)
     {
-        if ($results->businesses[$i]->id == $row['locationid'])
+        if ($search['results'][$i]['place_id'] == $row['locationid'])
         {
-            unset($results->businesses[$i]);
+            unset($search['results'][$i]);
         }
     }
 }
 
-// If we have only a ZIP and no lat/long, we'll have to look it up
-
 // Calculate distance of user to each business
-foreach ($results->businesses as $key => $value)
+for($i = 0; $i < count($search['results']); $i++)
 {
-
+    $search['results'][$i]['distance'] = distanceBetweenPoints($arguments['latitude'], $arguments['longitude'], $search['results'][$i]['geometry']['location']['lat'], $search['results'][$i]['geometry']['location']['lng']);
 }
 
-print_r($results);
+// Now sort by distance
+function resultsSortCompare($a, $b)
+{
+    return strcmp($a['distance'], $b['distance']);
+}
+usort($search['results'], 'resultsSortCompare');
 
-
-
-//$business = get_business(BUSINESS_PATH . $business_id);
+echo json_encode($search);
 
 ?>

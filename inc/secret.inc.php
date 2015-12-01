@@ -1,10 +1,8 @@
 <?php
 
 // We're unable to access the admin for our app to set the appropriate environment variables for these
-define('CONSUMER_KEY', '');
-define('CONSUMER_SECRET','');
-define('TOKEN','');
-define('TOKEN_SECRET','');
+define('GOOGLE_SERVER_KEY', '');
+define('GOOGLE_BROWSER_KEY', '');
 
 if (array_key_exists('OPENSHIFT_APP_NAME', $_ENV))
 {
