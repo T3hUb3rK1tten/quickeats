@@ -1,11 +1,8 @@
-var businesses;
-var latitude, longitude;
-var zip;
-var checkboxSelect, radioSelect;
-var browserapikey;
+var response;
+var usercoords;
 function showbusiness(i){
-	if(results.length > 0){
-		var business = results[i];
+	if(response.results.length > 0){
+		var business = response.results[i];
 		$("#bizname").text(business.name);
 		$("#bizrating").text(business.rating);
 		$("#bizaddress").text(business.vicinity);
@@ -13,7 +10,7 @@ function showbusiness(i){
 		if (business.photos != null && business.photos.length > 0)
 		{
 			var photoparams = {
-				key: browserapikey,
+				key: response.browserapikey,
 				photoreference: business.photos[0].photo_reference,
 				maxheight: 1024, // should probably change this based on client
 				maxwidth: 768
@@ -39,20 +36,18 @@ function showbusiness(i){
 	}
 };
 
-var businessindex = 1;
+var businessindex = 0;
 function nextbusiness(){
     showbusiness(businessindex);
 	businessindex++;
 };
 
 function zipInputSubmit() {
-	zip = $("#ZipCode").val();
 	$('#myModal_getZip').modal('hide');
 };
 
 var locationSuccess = function(position) {
-	latitude = position.coords.latitude;
-	longitude = position.coords.longitude;
+	usercoords = position.coords;
 	$('#myModal_Loading').modal('hide');
 };
 
@@ -65,28 +60,51 @@ var locationError = function(position) {
 };
 function getCheckbox(){
 	var chkArray = [];
-	
+
 	$("#checkboxlist input:checked").each(function() {
 		chkArray.push($(this).val());
 	});
-	
+
 	var selected;
 	selected = chkArray.join(',') + ",";
-	
+
 	if(selected.length > 1){
 		checkboxSelect = selected;
 	}
 }
-function getRadio(){
-	radioSelect = $("input:radio[name=distanceRadios]:checked").val();
+function getRadio() {
+
 }
 
-$(document).ready(function() {
-	$.getJSON( "restaurants.txt", function(data) {
-		results = data.results;
-		browserapikey = data.browserapikey;
-		showbusiness(0);
+function loadNextPage() {
+	var options = {
+		pagetoken: response.next_page_token
+	};
+	loadDataWithOptions(options);
+}
+
+function loadData() {
+	var options = {
+		zip: $("#ZipCode").val(),
+		latitude: usercoords.latitude,
+		longitude: usercoords.longitude,
+		minprice: $("input:checkbox[name=priceCheckboxes]:checked").first().val(),
+		maxprice: $("input:checkbox[name=priceCheckboxes]:checked").last().val(),
+		maxdistance: $("input:radio[name=distanceRadios]:checked").val()
+	};
+
+	loadDataWithOptions(options);
+}
+
+function loadDataWithOptions(options) {
+	$.getJSON( "restaurants.txt", options, function(data) {
+		response = data;
+		nextbusiness();
 	});
+}
+
+
+$(document).ready(function() {
 	if ("geolocation" in navigator) {
 		$('#myModal_Loading').modal( {
 			backdrop: 'static',
