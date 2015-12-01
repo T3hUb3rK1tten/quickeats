@@ -87,9 +87,26 @@ function loadDataWithOptions(options) {
 	});
 }
 
+function validateCheckboxes() {
+	if ($("#priceCheckbox1").is(":checked")) {
+		if ($("#priceCheckbox4").is(":checked")) {
+			$("#priceCheckbox3").prop("checked", true);
+		}
+		if ($("#priceCheckbox3").is(":checked")) {
+			$("#priceCheckbox2").prop("checked", true);
+		}
+	}
+	if ($("#priceCheckbox2").is(":checked")) {
+		if ($("#priceCheckbox4").is(":checked")) {
+			$("#priceCheckbox3").prop("checked", true);
+		}
+	}
+};
+
 
 $(document).ready(function() {
 
+	$("input:checkbox[name=priceCheckboxes]").change(validateCheckboxes);
 	$("#nextbusinessbtn").click(nextbusiness);
 
 	$("#ZipCodeForm").submit(function(event) {
@@ -102,6 +119,7 @@ $(document).ready(function() {
 		$('#myModal_Filters').modal('hide');
 		loadData();
 	});
+
 	if ("geolocation" in navigator) {
 		$('#myModal_Loading').modal( {
 			backdrop: 'static',
