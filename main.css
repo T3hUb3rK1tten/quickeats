@@ -50,10 +50,11 @@
   background-color: #e18a27;
 }
 .navbar-default .navbar-toggle {
-  border-color: #e18a27;
+  border-color: #3a3736;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-  background-color: #e18a27;
+  background-color: #3a3736;
+  border-color: #204d74;
 }
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #ffffff;
@@ -73,10 +74,11 @@
 .btn-primary {
 	color: #ffffff;
 	background-color: #3a3736 !important;
-	border-color: #e18a27;	
+	border-color: #3a3736;	
 }
 .btn {
 	color: #ffffff;
+	
 }
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {

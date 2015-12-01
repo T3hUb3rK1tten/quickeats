@@ -23,37 +23,35 @@
 		  <div class="container-fluid"> 
 			<div class="navbar-header">
 				<ul class="navbar-toggle collapsed" data-toggle="collapse">
-					<li><a class="btn-primary" role="button" href="#myModal" data-toggle="modal" data-target="#myModal_Settings"><i class="fa fa-cog fa-lg"></i></a></li>
-				</ul>
-				<ul class="navbar-toggle collapsed" data-toggle="collapse">
 					<li><a class="btn-primary" href="#myModal" data-toggle="modal" data-target="#myModal_Filters"><i class="fa fa-filter fa-lg"></i></a></li>
 				</ul>
 				<a class="navbar-brand" href="#">QuickEats</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-pills navbar-right">
-					<li><a class="btn" href="#myModal" data-toggle="modal" data-target="#myModal_Filters"><i class="fa fa-filter fa-2x"></i></a></li>
-				</ul>
-				<ul class="nav navbar-pills navbar-right">
-					<li><a class="btn" role="button" href="#myModal" data-toggle="modal" data-target="#myModal_Settings"><i class="fa fa-cog fa-2x"></i></a></li>
+					<li><a class="btn-primary" href="#myModal" data-toggle="modal" data-target="#myModal_Filters"><i class="fa fa-filter fa-2x"></i></a></li>
 				</ul>
 			</div>	
 		  </div>
 		</nav>
 		<nav class="navbar navbar-default navbar-fixed-bottom">
 			<div class="container-fluid">
-				<ul class="nav nav-pills nav-justified">
-					<li role="presentation">
-						<a id="nextbusinessbtn" class="btn" role="button">
-							<i class="fa fa-times fa-2x"></i>
-						</a>
-					</li>
-					<li role="presentation">
-						<a id="directionsbtn" class="btn" role="button">
-							<i class="fa fa-heart fa-2x"></i>
-						</a>
-					</li>
-				</ul>
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="btn-group btn-group-justified">
+							<div class="btn-group" role="group">
+								<button type="button" id="nextbusinessbtn" class="btn btn-primary">
+									<i class="fa fa-times fa-2x"></i>
+								</button>
+							</div>
+							<div class="btn-group" role="group">
+								<button type="button" id="directionsbtn" class="btn btn-primary">
+									<i class="fa fa-heart fa-2x"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</nav>
 		<div class="modal fade" id="myModal_Loading">
