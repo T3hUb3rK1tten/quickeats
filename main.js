@@ -94,7 +94,11 @@ $(document).ready(function() {
 		$('#myModal_getZip').modal('hide');
 		loadData();
 	});
-
+	$("#filtersForm").submit(function(event){
+		event.preventDefault();
+		$('#myModal_Filters').modal('hide');
+		loadData();
+	}
 	if ("geolocation" in navigator) {
 		$('#myModal_Loading').modal( {
 			backdrop: 'static',
