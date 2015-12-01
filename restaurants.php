@@ -5,14 +5,16 @@ error_reporting(E_ALL);
 require_once 'inc/secret.inc.php';
 require_once 'inc/sanitize.inc.php';
 require_once 'inc/yelp.inc.php';
+require_once 'inc/geo.inc.php';
 
 // Default search parameters
 $options = array();
 $options['term'] = 'food';
 $options['location'] = '75080';
 $options['limit'] = 20;
+$options['maxdistance'] = 15; // in miles
 
-// Override if request arguments are proper
+// Override if request arguments are not proper
 if (array_key_exists('term',$_REQUEST))
 {
     $options['term'] = sanitize_string($_REQUEST['term']);
@@ -31,13 +33,53 @@ if (array_key_exists('limit', $_REQUEST))
         $options['limit'] = min($limit, 25);
     }
 }
+if (array_key_exists('maxdistance', $_REQUEST))
+{
+    $maxdistance = sanitize_numeric($_REQUEST['maxdistance']);
+    if (is_numeric($maxdistance))
+    {
+        // Limit from 1 to 50 miles
+        $options['maxdistance'] = max(1, min($maxdistance, 50));
+    }
+}
 
-// Return results in JSON format
+// Fetch results in JSON format
 $rawresults = request(SEARCH_PATH, $options);
-echo $rawresults;
+$results = json_decode($rawresults);
 
-//$results = json_decode($rawresults);
-//print_r($results);
+// Connect to database
+$db = new mysqli(MYSQL_HOST, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DATABASE, MYSQL_PORT);
+if ($db->connect_errno > 0)
+{
+    die('Unable to connect to database: ' . $db->connect_error);
+}
+
+// Return all rows in addlocations
+// Could have database calculate distance and return within bounds, not enough rows yet to justify duplicate code
+$queryaddlocations = <<<SQL
+SELECT * FROM `addlocations`
+SQL;
+
+// Insert all businesses into results array, we'll calculate distances and cut off later
+$queryaddlocationsresult = $db->query($queryaddlocations);
+while($row = $queryaddlocationsresult->fetch_assoc()){
+    $newbusiness = new stdClass;
+    $newbusiness->name = $row['name'];
+    $newbusiness->url = $row['url'];
+    $newbusiness->phone = $row['phone'];
+    $newbusiness->image_url = $row['imageurl'];
+    $newbusiness->location = new stdClass;
+    $newbusiness->location->display_address = array($row['address']);
+    $newbusiness->location->address = array($row['address']);
+    $newbusiness->location->coordinate = new stdClass;
+    $newbusiness->location->coordinate->latitude = array($row['latitude']);
+    $newbusiness->location->coordinate->longitude = array($row['longitude']);
+
+    $results->businesses[] = $newbusiness;
+}
+
+print_r($results);
+
 //$business = get_business(BUSINESS_PATH . $business_id);
 
 ?>
