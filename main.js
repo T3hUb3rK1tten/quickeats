@@ -58,7 +58,6 @@ function getCoords(){
 
 function zipInput () {
 	zip = $("#ZipCode").val().trim();
-	alert(zip);
 	if (zip == "")
 	{
 		alert("Please enter your Zip Code");
@@ -69,7 +68,6 @@ function zipInput () {
 	}
 }; 
 function trim (str) {
-	alert("im in");
 	return str.replace(/^\s+|\s+$/g, '');
 };
 $(document).ready(function() {
