@@ -1,7 +1,6 @@
 var businesses;
 var x=1;
-var latitude;
-var longitute;
+var latitude, longitude;
 var zip;
 function showbusiness(i){
 	if(businesses.length > 0){
@@ -30,59 +29,52 @@ function nextbusiness(){
     showbusiness(x);
 	x++;
 };
-function getZip() {
-	if(coords == 0){
-		$('#myModal_getZip').modal({
-			backdrop: 'static',
-			keyboard: false
-		});
-	}
-};
-function zipInput () {
+
+function zipInputSubmit() {
 	zip = $("#ZipCode").val().trim();
 	if (zip == "")
 	{
-		output.innerHTML = "Please enter your Zip Code";
+		output.innerHTML = "Please enter your Zip Code"; // does nothing?
 	}
 	else
 	{
 		$('#myModal_getZip').modal('hide');
 	}
 };
-function loading(){
-	$('#myModal_Loading').modal({
+
+var locationSuccess = function(position) {
+	latitude = position.coords.latitude;
+	longitude = position.coords.longitude;
+	$('#myModal_Loading').modal('hide');
+};
+
+var locationError = function(position) {
+	$('#myModal_Loading').modal('hide');
+	$('#myModal_getZip').modal({
 		backdrop: 'static',
 		keyboard: false
 	});
 };
-var success = function(position) {
-	latitude	= position.coords.latitude;
-	longitude	= position.coords.longitude;
-	$('#myModal_Loading').modal('hide');
-};
-var error = function(position) {
-	$('#myModal_Loading').modal('hide');
-	$('#myModal_getZip').modal('show');
-};
-var geo_options = {
-	timeout	: 5000
-};
-function getCoords(){
-	
-	navigator.geolocation.getCurrentPosition(success, error, geo_options);
-	
-	return false;
-};
+
 $(document).ready(function() {
 	$.getJSON( "restaurants.txt", function(data) {
 		businesses = data.businesses;
 		showbusiness(0);
 	});
-	if ("geolocation" in navigator){
-		getCoords();
+	if ("geolocation" in navigator) {
+		$('#myModal_Loading').modal( {
+			backdrop: 'static',
+			keyboard: false
+		});
+
+		var geo_options = {
+			timeout	: 5000
+		};
+		navigator.geolocation.getCurrentPosition(locationSuccess, locationError, geo_options);
+	} else {
+		$('#myModal_getZip').modal({
+			backdrop: 'static',
+			keyboard: false
+		});
 	}
-	else{
-		getZip();
-	}
-	loading();
 });	
