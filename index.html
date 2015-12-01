@@ -100,59 +100,64 @@
 			  </div>
 			  <div class="modal-body">
 				<p>Price</p>
-				<div class="checkbox">
-					<label>
-						<input type="checkbox"  name="priceCheckboxes" id="priceCheckbox1" value="price1">
-						$
-					</label>
-				</div>
-				<div class="checkbox">
-					<label>
-						<input type="checkbox"  name="priceCheckboxes" id="priceCheckbox2" value="price2">
-						$$
-					</label>
-				</div>
-				<div class="checkbox">
-					<label>
-						<input type="checkbox"  name="priceCheckboxes" id="priceCheckbox3" value="price3">
-						$$$
-					</label>
-				</div>
-				<div class="checkbox">
-					<label>
-						<input type="checkbox"  name="priceCheckboxes" id="priceCheckbox4" value="price4">
-						$$$$
-					</label>
+				<div id="checkboxlist">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox"  name="priceCheckboxes" id="priceCheckbox1" value="1">
+							$
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox"  name="priceCheckboxes" id="priceCheckbox2" value="2">
+							$$
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox"  name="priceCheckboxes" id="priceCheckbox3" value="3">
+							$$$
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox"  name="priceCheckboxes" id="priceCheckbox4" value="4">
+							$$$$
+						</label>
+					</div>
 				</div>
 				<p>Distance</p>
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" name="distanceCheckboxes" id="distanceCheckbox1" value="distance1">
-						5 Miles
-					</label>
-				</div>
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" name="distanceCheckboxes" id="distanceCheckbox2" value="distance2">
-						10 Miles
-					</label>
-				</div>
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" name="distanceCheckboxes" id="distanceCheckbox3" value="distance3">
-						15 Miles
-					</label>
-				</div>
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" name="distanceCheckboxes" id="distanceCheckbox4" value="distance4">
-						15 Miles
-					</label>
+				<div id="radiolist">
+					<div class="radio">
+						<label>
+							<input type="radio" name="distanceRadios" id="distanceRadios1" value="5">
+							5 Miles
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="distanceRadios" id="distanceRadios2" value="10">
+							10 Miles
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="distanceRadios" id="distanceRadios3" value="15">
+							15 Miles
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="distanceRadios" id="distanceRadios4" value="30">
+							30 Miles
+						</label>
+					</div>
+					
 				</div>
 			  </div>
 			  <div class="modal-footer">
 				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-primary" id="saveFilters">Save changes</button>
 			  </div>
 			</div>
 		  </div>
