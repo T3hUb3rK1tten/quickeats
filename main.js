@@ -29,15 +29,7 @@ function nextbusiness(){
     showbusiness(x);
 	x++;
 };
-var c = function(position) {
-	var lat		= position.coords.latitude,
-		longitude	= position.coords.longitude;
-		
-		coords	= lat + ', ' + longitude;
-		alert(coords);
-};
 function getZip() {
-	alert("hello");
 	if(coords == 0){
 		$('#myModal_getZip').modal({
 			backdrop: 'static',
@@ -50,14 +42,41 @@ function loading(){
 		backdrop: 'static',
 		keyboard: false
 	});
-}
+};
+var success = function(position) {
+	var lat		= position.coords.latitude,
+		longitude	= position.coords.longitude;
+		
+		coords	= lat + ', ' + longitude;
+};
+var error = function(position) {
+	$('#myModal_Loading').modal('hide');
+	$('#myModal_getZip').modal('show');
+};
+var geo_options = {
+	timeout	: 5000
+};
 function getCoords(){
-	navigator.geolocation.getCurrentPosition(c);
+	
+	navigator.geolocation.getCurrentPosition(success, error, geo_options);
 	
 	return false;
-}
+};
 
-//window.onload=getCoords();
+function zipInput () {
+	zip = $("#ZipCode").val().trim();
+	if (zip == "")
+	{
+		alert("Please enter your Zip Code");
+	}
+	else
+	{
+		$('#myModal_getZip').modal('hide');
+	}
+}; 
+function trim (str) {
+	return str.replace(/^\s+|\s+$/g, '');
+};
 $(document).ready(function() {
 	$.getJSON( "restaurants.txt", function(data) {
 		businesses = data.businesses;
@@ -68,6 +87,11 @@ $(document).ready(function() {
 		navigator.geolocation.getCurrentPosition(c);
 		return false;
 	});*/
-	window.onload=loading();
-	window.onload=getCoords();
+	if ("geolocation" in navigator){
+		getCoords();
+	}
+	else{
+		getZip();
+	}
+	loading();
 });	

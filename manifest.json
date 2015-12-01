@@ -1,0 +1,12 @@
+{
+  "name": "QuickEats",
+  "short_name": "QuickEats",
+  "start_url": "index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "icons": [{
+    "src": "images/android/QuickEats_192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }]
+}
