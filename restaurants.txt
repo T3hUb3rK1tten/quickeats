@@ -61,10 +61,9 @@
             "is_claimed": false,
             "rating": 4.0,
             "mobile_url": "http://m.yelp.com/biz/chick-fil-a-the-colony",
-            "rating_img_url": "http://s3-media4.fl.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
             "review_count": 17,
             "name": "Chick-fil-A",
-            "rating_img_url_small": "http://s3-media4.fl.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+            "rating_img_url_small": "",
             "url": "http://www.yelp.com/biz/chick-fil-a-the-colony",
             "categories": [
                 [
@@ -78,7 +77,7 @@
             "image_url": "http://s3-media2.fl.yelpcdn.com/bphoto/AjrjueH0uHFnnw_0sAyBwA/ms.jpg",
             "snippet_image_url": "http://s3-media3.fl.yelpcdn.com/photo/9ulRla_pMO9irc8lLkD0oQ/ms.jpg",
             "display_phone": "+1-972-370-2760",
-            "rating_img_url_large": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+            "rating_img_url_large": "",
             "menu_provider": "single_platform",
             "id": "chick-fil-a-the-colony",
             "is_closed": false,
