@@ -36,15 +36,29 @@ function getZip() {
 		});
 	}
 };
+function loading(){
+	$('#myModal_Loading').modal({
+		backdrop: 'static',
+		keyboard: false
+	});
+}
+function getCoords(){
+	navigator.geolocation.getCurrentPosition(c);
+	
+	return false;
+}
+
+//window.onload=getCoords();
 $(document).ready(function() {
 	$.getJSON( "restaurants.txt", function(data) {
 		businesses = data.businesses;
 		showbusiness(0);
 	});
-	$("#get_location").click (function(){
+	/*$("#get_location").click (function(){
 		alert("called");
 		navigator.geolocation.getCurrentPosition(c);
 		return false;
-	});
-	
+	});*/
+	window.onload=loading();
+	window.onload=getCoords();
 });	
