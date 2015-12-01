@@ -28,15 +28,8 @@ function nextbusiness(){
 };
 
 function zipInputSubmit() {
-	zip = $("#ZipCode").val().trim();
-	if (zip == "")
-	{
-		output.innerHTML = "Please enter your Zip Code"; // does nothing?
-	}
-	else
-	{
-		$('#myModal_getZip').modal('hide');
-	}
+	zip = $("#ZipCode").val();
+	$('#myModal_getZip').modal('hide');
 };
 
 var locationSuccess = function(position) {
