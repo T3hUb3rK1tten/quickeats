@@ -38,8 +38,14 @@ function showbusiness(i){
 
 var businessindex = 0;
 function nextbusiness(){
-    showbusiness(businessindex);
-	businessindex++;
+	if (businessindex >= response.results.length) {
+		loadData(true);
+	}
+	else
+	{
+		showbusiness(businessindex);
+		businessindex++;
+	}
 };
 
 var locationSuccess = function(position) {
@@ -56,14 +62,10 @@ var locationError = function(position) {
 	});
 };
 
-function loadNextPage() {
-	var options = {
-		pagetoken: response.next_page_token
-	};
-	loadDataWithOptions(options);
-}
+function loadData(nextpage) {
+	// Deactivate click until we load more data
+	$("#nextbusinessbtn").off("click");
 
-function loadData() {
 	var options = {
 		zip: $("#ZipCode").val(),
 		minprice: $("input:checkbox[name=priceCheckboxes]:checked").first().val(),
@@ -71,19 +73,20 @@ function loadData() {
 		maxdistance: $("input:radio[name=distanceRadios]:checked").val()
 	};
 
+	if (nextpage) {
+		options.pagetoken = response.next_page_token;
+	}
+
 	if (usercoords) {
 		options.latitude = usercoords.latitude;
 		options.longitude = usercoords.longitude;
 	}
 
-	loadDataWithOptions(options);
-}
-
-function loadDataWithOptions(options) {
 	businessindex = 0;
-	$.getJSON( "restaurants.txt", options, function(data) {
+	$.getJSON( "restaurants.php", options, function(data) {
 		response = data;
 		nextbusiness();
+		$("#nextbusinessbtn").on("click", nextbusiness);
 	});
 }
 
@@ -105,7 +108,6 @@ function validateCheckboxes() {
 
 
 $(document).ready(function() {
-
 	$("input:checkbox[name=priceCheckboxes]").change(validateCheckboxes);
 	$("#nextbusinessbtn").click(nextbusiness);
 
