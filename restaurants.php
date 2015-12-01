@@ -38,8 +38,9 @@ if (array_key_exists('maxdistance', $_REQUEST))
     $maxdistance = sanitize_numeric($_REQUEST['maxdistance']);
     if (is_numeric($maxdistance))
     {
-        // Limit from 1 to 50 miles
-        $arguments['maxdistance'] = $maxdistance;
+        // Limit from 1 to 24.855 miles, but distance to API is specified in meters
+        // We expect miles from user, convert to meters here
+        $arguments['maxdistance'] = $maxdistance * 1609.344;
     }
 }
 
@@ -79,16 +80,20 @@ SQL;
     $stmt->fetch();
     $arguments['latitude'] = $latitude;
     $arguments['longitude'] = $longitude;
+    $stmt->free_result();
 }
+
+// If there are coordinates but no zip
 
 print_r($arguments);
 
 // Yelp API options
 $options = array();
 $options['term'] = (array_key_exists('term', $arguments)) ? $arguments['term'] : 'food';
-$options['location'] = '75080'; // TODO: remove
-$options['limit'] = 20;
-$options['maxdistance'] = 15; // in miles
+$options['location'] = (array_key_exists('zip', $arguments)) ? $arguments['zip'] : 'null';
+$options['cll'] = (array_key_exists('latitude', $arguments) && array_key_exists('longitude', $arguments)) ? $arguments['latitude'] . ',' . $arguments['longitude'] : '';
+$options['limit'] = (array_key_exists('limit', $arguments)) ? min(max($arguments['limit'], 20), 1) : 20; // limited by Yelp to 20, can request another 20
+$options['maxdistance'] = (array_key_exists('maxdistance', $arguments)) ? min(max($arguments['maxdistance'], 40000), 1) : 15000; // in meters
 
 // Fetch results in JSON format
 $rawresults = request(SEARCH_PATH, $options);
