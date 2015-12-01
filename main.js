@@ -90,6 +90,8 @@ function loadDataWithOptions(options) {
 
 $(document).ready(function() {
 
+	$("#nextbusinessbtn").click(nextbusiness);
+
 	$("#ZipCodeForm").submit(function(event) {
 		event.preventDefault();
 		$('#myModal_getZip').modal('hide');

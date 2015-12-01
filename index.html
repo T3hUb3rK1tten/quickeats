@@ -44,12 +44,12 @@
 			<div class="container-fluid">
 				<ul class="nav nav-pills nav-justified">
 					<li role="presentation">
-						<a class="btn" href="#" role="button" onclick="nextbusiness();">
+						<a id="nextbusinessbtn" class="btn" role="button">
 							<i class="fa fa-times fa-2x"></i>
 						</a>
 					</li>
 					<li role="presentation">
-						<a id="directionsbtn" class="btn" href="#" role="button">
+						<a id="directionsbtn" class="btn" role="button">
 							<i class="fa fa-heart fa-2x"></i>
 						</a>
 					</li>
@@ -80,7 +80,7 @@
 						<form id="ZipCodeForm" class="form-inline">
 							<div class="form-group">
 								<label for="ZipCodeForm">Zip Code</label>
-								<input type="text" val="" pattern="\d{5}" class="form-control" id="ZipCode" placeholder="Your ZIP" title="Please use the five digit (12345) ZIP format" required>
+								<input type="text" pattern="\d{5}" class="form-control" id="ZipCode" placeholder="Your ZIP" title="Please use the five digit (12345) ZIP format" required>
 								
 							</div>
 							<button type="submit" class="btn btn-primary">Submit</button>
