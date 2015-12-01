@@ -24,6 +24,8 @@ class GooglePlaces
     public  $placeid   = null;
     public  $reference = null;
     public  $opennow   = null;
+    public  $minprice  = null;
+    public  $maxprice  = null;
 
     public  $subradius = null;
     public  $getmax    = true;
