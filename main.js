@@ -23,16 +23,6 @@ function showbusiness(i){
 		}
 
 		$("#directionsbtn").attr("href", "https://www.google.com/maps?hl=en&q=" + business.geometry.location.lat + "%2C" + business.geometry.location.lng);
-
-		/*$("#bizratingpic").attr("src",business.rating_img_url_large);
-		if(business.rating_img_url_large == null){
-			$("#bizratingpic").hide();
-		}
-		else
-		{
-			$("#bizratingpic").show();
-		}
-		*/
 	}
 };
 
