@@ -1,8 +1,8 @@
 var businesses;
 var latitude, longitude;
 var zip;
+var checkboxSelect, radioSelect;
 var browserapikey;
-
 function showbusiness(i){
 	if(results.length > 0){
 		var business = results[i];
@@ -63,6 +63,26 @@ var locationError = function(position) {
 		keyboard: false
 	});
 };
+function getCheckbox(){
+	var chkArray = [];
+	
+	$("#checkboxlist input:checked").each(function() {
+		chkArray.push($(this).val());
+	});
+	
+	var selected;
+	selected = chkArray.join(',') + ",";
+	
+	if(selected.length > 1){
+		checkboxSelect = selected;	
+	}
+}
+function getRadio(){
+	alert("im here");
+	radioSelect = $("input[distanceRadios]:checked").val();
+	alert($("input[distanceRadios]:checked").val());
+	
+}
 
 $(document).ready(function() {
 	$.getJSON( "restaurants.txt", function(data) {
@@ -86,4 +106,9 @@ $(document).ready(function() {
 			keyboard: false
 		});
 	}
+	$("#saveFilters").click(function(){
+		getCheckbox();
+		getRadio();
+		$('myModal_Filters').modal('hide');
+	});
 });	
