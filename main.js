@@ -42,11 +42,6 @@ function nextbusiness(){
 	businessindex++;
 };
 
-function zipInputSubmit() {
-	$('#myModal_getZip').modal('hide');
-	loadData();
-};
-
 var locationSuccess = function(position) {
 	usercoords = position.coords;
 	$('#myModal_Loading').modal('hide');
@@ -107,6 +102,13 @@ function loadDataWithOptions(options) {
 
 
 $(document).ready(function() {
+
+	$("#ZipCodeForm").submit(function(event) {
+		event.preventDefault();
+		$('#myModal_getZip').modal('hide');
+		loadData();
+	});
+
 	if ("geolocation" in navigator) {
 		$('#myModal_Loading').modal( {
 			backdrop: 'static',
