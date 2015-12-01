@@ -80,6 +80,7 @@ function loadData() {
 }
 
 function loadDataWithOptions(options) {
+	businessindex = 0;
 	$.getJSON( "restaurants.txt", options, function(data) {
 		response = data;
 		nextbusiness();
@@ -98,7 +99,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		$('#myModal_Filters').modal('hide');
 		loadData();
-	}
+	});
 	if ("geolocation" in navigator) {
 		$('#myModal_Loading').modal( {
 			backdrop: 'static',
