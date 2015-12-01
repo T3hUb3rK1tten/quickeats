@@ -44,7 +44,9 @@ $places->radius = $arguments['maxdistance'];
 $places->types = array('restaurant', 'food');
 $places->keyword = 'food';
 $places->opennow = true;
+
 $search = $places->nearbySearch();
+$search['browserapikey'] = GOOGLE_BROWSER_KEY;
 
 // Return all rows in addlocations
 // Could have database calculate distance and return within bounds, not enough rows yet to justify duplicate code

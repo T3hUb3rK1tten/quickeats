@@ -1,16 +1,31 @@
 var businesses;
-var x=1;
 var latitude, longitude;
 var zip;
 var checkboxSelect, radioSelect;
+var browserapikey;
 function showbusiness(i){
 	if(results.length > 0){
 		var business = results[i];
 		$("#bizname").text(business.name);
 		$("#bizrating").text(business.rating);
 		$("#bizaddress").text(business.vicinity);
-		/*$("#bizpicture").attr("src",business.image_url);
-		$("#bizratingpic").attr("src",business.rating_img_url_large);
+
+		if (business.photos != null && business.photos.length > 0)
+		{
+			var photoparams = {
+				key: browserapikey,
+				photoreference: business.photos[0].photo_reference,
+				maxheight: 1024, // should probably change this based on client
+				maxwidth: 768
+			};
+			$("#bizpicture").attr("src", "https://maps.googleapis.com/maps/api/place/photo?" + $.param(photoparams));
+		}
+		else
+		{
+			$("#bizpicture").attr("src", "QuickEats_Transparent2.png");
+		}
+
+		/*$("#bizratingpic").attr("src",business.rating_img_url_large);
 		if(business.rating_img_url_large == null){
 			$("#bizratingpic").hide();
 		}
@@ -22,21 +37,15 @@ function showbusiness(i){
 	}
 };
 
+var businessindex = 1;
 function nextbusiness(){
-    showbusiness(x);
-	x++;
+    showbusiness(businessindex);
+	businessindex++;
 };
 
 function zipInputSubmit() {
-	zip = $("#ZipCode").val().trim();
-	if (zip == "")
-	{
-		output.innerHTML = "Please enter your Zip Code"; // does nothing?
-	}
-	else
-	{
-		$('#myModal_getZip').modal('hide');
-	}
+	zip = $("#ZipCode").val();
+	$('#myModal_getZip').modal('hide');
 };
 
 var locationSuccess = function(position) {
@@ -76,6 +85,7 @@ function getRadio(){
 $(document).ready(function() {
 	$.getJSON( "restaurants.txt", function(data) {
 		results = data.results;
+		browserapikey = data.browserapikey;
 		showbusiness(0);
 	});
 	if ("geolocation" in navigator) {
