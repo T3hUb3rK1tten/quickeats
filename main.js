@@ -44,11 +44,13 @@ function nextbusiness(){
 
 function zipInputSubmit() {
 	$('#myModal_getZip').modal('hide');
+	loadData();
 };
 
 var locationSuccess = function(position) {
 	usercoords = position.coords;
 	$('#myModal_Loading').modal('hide');
+	loadData();
 };
 
 var locationError = function(position) {
