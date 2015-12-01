@@ -76,13 +76,13 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h4 class="modal-title">We need your location</h4>
+						<h4 class="modal-title">Please enter your ZIP code</h4>
 					</div>
 					<div class="modal-body">
 						<form id="ZipCodeForm" class="form-inline">
 							<div class="form-group">
 								<label for="ZipCodeForm">Zip Code</label>
-								<input type="number" class="form-control" id="ZipCode" placeholder="Enter Zip">
+								<input type="text" val="" pattern="\d{5}" class="form-control" id="ZipCode" placeholder="Your ZIP" title="Please use the five digit (12345) ZIP format" required>
 								
 							</div>
 							<button type="submit" class="btn btn-primary" onclick="zipInput();">Submit</button>
