@@ -55,23 +55,6 @@ var locationError = function(position) {
 		keyboard: false
 	});
 };
-function getCheckbox(){
-	var chkArray = [];
-
-	$("#checkboxlist input:checked").each(function() {
-		chkArray.push($(this).val());
-	});
-
-	var selected;
-	selected = chkArray.join(',') + ",";
-
-	if(selected.length > 1){
-		checkboxSelect = selected;
-	}
-}
-function getRadio() {
-
-}
 
 function loadNextPage() {
 	var options = {
@@ -125,9 +108,4 @@ $(document).ready(function() {
 			keyboard: false
 		});
 	}
-	$("#saveFilters").click(function(){
-		getCheckbox();
-		getRadio();
-		$('myModal_Filters').modal('hide');
-	});
 });	
