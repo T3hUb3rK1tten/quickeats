@@ -44,6 +44,14 @@ $places->radius = $arguments['maxdistance'];
 $places->types = array('restaurant', 'food');
 $places->keyword = 'food';
 $places->opennow = true;
+$places->minprice = $arguments['minprice'];
+$places->maxprice = $arguments['maxprice'];
+
+if (array_key_exists('pagetoken', $arguments))
+{
+    // Retrieves next page of results
+    $places->pagetoken = $arguments['pagetoken'];
+}
 
 $search = $places->nearbySearch();
 $search['browserapikey'] = GOOGLE_BROWSER_KEY;
