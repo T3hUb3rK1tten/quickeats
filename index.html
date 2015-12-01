@@ -9,6 +9,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 		
 		<script src="main.js"></script>
+		<link rel="icon" href="images/favicon/favicon.png" type="image/png" sizes="16x16">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="main.css">
@@ -67,9 +68,6 @@
 						<img src="QuickEats_Transparent2.png" class="img-responsive"/>
 						<h6>Loading</h6>
 						<i class="fa fa-spinner fa-pulse"></i>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" onclick="getZip();" data-dismiss="modal">Submit</button>
 					</div>
 				</div>
 			</div>
@@ -157,10 +155,10 @@
 			  <div class="modal-body">
 				<form class="form-inline">
 					<div class="form-group">
-						<label for="ZipCode">Zip Code</label>
-						<input type="Text" class="form-control" id="ZipCode" placeholder="Enter Zip">
-						
+						<label for="ZipCodeForm">Zip Code</label>
+						<input type="number" class="form-control" id="ZipCode" placeholder="Enter Zip">		
 					</div>
+							<button type="submit" class="btn btn-primary" onclick="zipInput();">Submit</button>
 				</form>
 				<p>About QuickEats</p>
 			  </div>
