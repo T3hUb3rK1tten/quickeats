@@ -7,52 +7,92 @@ require_once 'inc/sanitize.inc.php';
 require_once 'inc/yelp.inc.php';
 require_once 'inc/geo.inc.php';
 
-// Default search parameters
-$options = array();
-$options['term'] = 'food';
-$options['location'] = '75080';
-$options['limit'] = 20;
-$options['maxdistance'] = 15; // in miles
-
-// Override if request arguments are not proper
-if (array_key_exists('term',$_REQUEST))
-{
-    $options['term'] = sanitize_string($_REQUEST['term']);
-}
-if (array_key_exists('location',$_REQUEST))
-{
-    $options['location'] = sanitize_string($_REQUEST['location']);
-}
-if (array_key_exists('limit', $_REQUEST))
-{
-    $limit = sanitize_numeric($_REQUEST['limit']);
-    // Ignore if it doesn't seem numeric
-    if (is_numeric($limit))
-    {
-        // Limit to 25 results
-        $options['limit'] = min($limit, 25);
-    }
-}
-if (array_key_exists('maxdistance', $_REQUEST))
-{
-    $maxdistance = sanitize_numeric($_REQUEST['maxdistance']);
-    if (is_numeric($maxdistance))
-    {
-        // Limit from 1 to 50 miles
-        $options['maxdistance'] = max(1, min($maxdistance, 50));
-    }
-}
-
-// Fetch results in JSON format
-$rawresults = request(SEARCH_PATH, $options);
-$results = json_decode($rawresults);
-
 // Connect to database
 $db = new mysqli(MYSQL_HOST, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DATABASE, MYSQL_PORT);
 if ($db->connect_errno > 0)
 {
     die('Unable to connect to database: ' . $db->connect_error);
 }
+
+// Contains user-specified data
+$arguments = array();
+
+// Override if request arguments are not proper
+if (array_key_exists('term',$_REQUEST))
+{
+    $arguments['term'] = sanitize_string($_REQUEST['term']);
+}
+
+if (array_key_exists('limit', $_REQUEST))
+{
+    $limit = sanitize_numeric($_REQUEST['limit']);
+    // Ignore if it doesn't seem numeric
+    if (is_numeric($limit))
+    {
+        $arguments['limit'] = $limit;
+    }
+}
+
+if (array_key_exists('maxdistance', $_REQUEST))
+{
+    $maxdistance = sanitize_numeric($_REQUEST['maxdistance']);
+    if (is_numeric($maxdistance))
+    {
+        // Limit from 1 to 50 miles
+        $arguments['maxdistance'] = $maxdistance;
+    }
+}
+
+if (array_key_exists('zip',$_REQUEST))
+{
+    $zip = sanitize_numeric($_REQUEST['zip']);
+    if (is_numeric($zip))
+    {
+        // Remove leading zeros
+        $arguments['zip'] = ltrim($zip, "0");
+    }
+}
+
+if (array_key_exists('latitude',$_REQUEST) && array_key_exists('longitude',$_REQUEST))
+{
+    $latitude = sanitize_numeric($_REQUEST['latitude']);
+    $longitude = sanitize_numeric($_REQUEST['longitude']);
+    if (is_numeric($latitude) && is_numeric($longitude))
+    {
+        $arguments['latitude'] = $latitude;
+        $arguments['longitude'] = $longitude;
+    }
+}
+
+// If there is a zip but no coordinates, look up approximate coordinates from database
+if (array_key_exists('zip', $arguments) && (!array_key_exists('latitude', $arguments) || !array_key_exists(('longitude'), $arguments)))
+{
+    $queryzipcoordinate = <<<SQL
+SELECT `latitude`, `longitude` FROM `zipcoordinates`
+WHERE `zip` = ?
+SQL;
+
+    $stmt = $db->prepare($queryzipcoordinate);
+    $stmt ->bind_param('i', $arguments['zip']);
+    $stmt->execute();
+    $stmt->bind_result($latitude, $longitude);
+    $stmt->fetch();
+    $arguments['latitude'] = $latitude;
+    $arguments['longitude'] = $longitude;
+}
+
+print_r($arguments);
+
+// Yelp API options
+$options = array();
+$options['term'] = (array_key_exists('term', $arguments)) ? $arguments['term'] : 'food';
+$options['location'] = '75080'; // TODO: remove
+$options['limit'] = 20;
+$options['maxdistance'] = 15; // in miles
+
+// Fetch results in JSON format
+$rawresults = request(SEARCH_PATH, $options);
+$results = json_decode($rawresults);
 
 // Return all rows in addlocations
 // Could have database calculate distance and return within bounds, not enough rows yet to justify duplicate code
@@ -95,6 +135,14 @@ while($row = $queryremovelocationsresult->fetch_assoc())
             unset($results->businesses[$i]);
         }
     }
+}
+
+// If we have only a ZIP and no lat/long, we'll have to look it up
+
+// Calculate distance of user to each business
+foreach ($results->businesses as $key => $value)
+{
+
 }
 
 print_r($results);
