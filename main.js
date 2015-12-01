@@ -48,9 +48,6 @@ function zipInput () {
 	{
 		$('#myModal_getZip').modal('hide');
 	}
-}; 
-function trim (str) {
-	return str.replace(/^\s+|\s+$/g, '');
 };
 function loading(){
 	$('#myModal_Loading').modal({
