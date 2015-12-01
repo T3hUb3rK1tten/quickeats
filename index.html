@@ -17,11 +17,12 @@
 	</head>
 	
 	<body>
+		
 		<nav class="navbar navbar-default navbar-static-top" role="navigation">
 		  <div class="container-fluid"> 
 			<div class="navbar-header">
 				<ul class="navbar-toggle collapsed" data-toggle="collapse">
-					<li><a class="btn-primary" href="#myModal" data-toggle="modal" data-target="#myModal_Settings"><i class="fa fa-cog"></i></a></li>
+					<li><a class="btn-primary" role="button" href="#myModal" data-toggle="modal" data-target="#myModal_Settings"><i class="fa fa-cog"></i></a></li>
 				</ul>
 				<ul class="navbar-toggle collapsed" data-toggle="collapse">
 					<li><a class="btn-primary" href="#myModal" data-toggle="modal" data-target="#myModal_Filters"><i class="fa fa-filter"></i></a></li>
@@ -29,15 +30,69 @@
 				<a class="navbar-brand" href="#">QuickEats</a>
 			</div>
 			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav navbar-left">
+				<ul class="nav navbar-pills navbar-right">
 					<li><a class="btn" href="#myModal" data-toggle="modal" data-target="#myModal_Filters"><i class="fa fa-filter fa-lg"></i></a></li>
 				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a class="btn" href="#myModal" data-toggle="modal" data-target="#myModal_Settings"><i class="fa fa-cog fa-lg"></i></a></li>
+				<ul class="nav navbar-pills navbar-right">
+					<li><a class="btn" role="button" href="#myModal" data-toggle="modal" data-target="#myModal_Settings"><i class="fa fa-cog fa-lg"></i></a></li>
 				</ul>
 			</div>	
 		  </div>
 		</nav>
+		<nav class="navbar navbar-default navbar-fixed-bottom">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<ul class="navbar-toggle collapsed" data-toggle="collapse">
+						<li><a id="directionsbtn" class="btn-primary" href="#" role="button"><i class="fa fa-heart fa-lg"></i></a></li>
+					</ul>
+					<ul class="navbar-toggle collapsed navbar-left" data-toggle="collapse">
+						<li><a class="btn-primary" href="#" role="button" onclick="nextbusiness();"><i class="fa fa-times fa-lg"></i></a></li>
+					</ul>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav nav-pills nav-justified">
+						<li role="presentation"><a class="btn" href="#" role="button" onclick="nextbusiness();"><i class="fa fa-times fa-lg"></i></a></li>
+						<li role="presentation"><a id="directionsbtn" class="btn" href="#" role="button"><i class="fa fa-heart fa-lg"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="modal fade" id="myModal_Loading">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Welcome to Quick Eats</h4>
+					</div>
+					<div class="modal-body">
+						<h4>LOADING!!!!!!</h4>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" onclick="getZip();" data-dismiss="modal">Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="myModal_getZip">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">We need your location</h4>
+					</div>
+					<div class="modal-body">
+						<form id="ZipCode" class="form-inline">
+							<div class="form-group">
+								<label for="ZipCode">Zip Code</label>
+								<input type="Text" class="form-control" id="ZipCode" placeholder="Enter Zip">
+								
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" onclick=" ">Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="modal fade" id="myModal_Filters">
 		  <div class="modal-dialog">
 			<div class="modal-content">
@@ -117,9 +172,11 @@
 		  </div>
 		</div>
 		<div class="container">
-			<!--<div class="row">
-				<div class="col-xs-3 "></div>
-				<div class="col-xs-6 ">-->
+					<div class="row">
+						<div class="cold-xs-12 col-sm-3 col-sm-offset-3">
+							<a href="#"	id="get_location">Get Location</a>
+						</div>
+					</div>
 					<div class="row">
 						<div class="col-xs-12 col-sm-6 col-sm-offset-3 ">
 							<img class="img-responsive" id="bizpicture" />
@@ -139,26 +196,10 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="restaurant-stars">
-							<div class="restaurant-stars-rating" title="2.5">              
-								&nbsp;
-							</div>
+						<div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
+							<a id="directionsbtn" class="btn btn-default" href="#" role="button"><i class="fa fa-heart fa-lg"></i></a>
 						</div>
 					</div>
-					<div class="row">
-						
-						<div class="col-xs-6 col-sm-3 col-sm-offset-3 ">
-							<a class="btn btn-default" href="#" role="button" onclick="nextbusiness();"><i class="fa fa-times fa-5x"></i></a>
-						</div>
-						
-						<div class="col-xs-6 col-sm-3 text-right">
-							<a id="directionsbtn" class="btn btn-default" href="#" role="button"><i class="fa fa-heart fa-5x"></i></a>
-						</div>
-						
-					</div>
-				<!--</div>
-				<div class="col-xs-3 "></div>
-			</div>-->
 		</div>
 	</body>
 </html>

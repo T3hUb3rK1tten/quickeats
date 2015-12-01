@@ -1,5 +1,7 @@
 var businesses;
 var x=1;
+var coords = 0;
+var zip;
 function showbusiness(i){
 		if(businesses.length > 0){
 			var business = businesses[i];
@@ -18,10 +20,45 @@ function nextbusiness(){
     showbusiness(x);
 	x++;
 };
+var c = function(position) {
+	var lat		= position.coords.latitude,
+		longitude	= position.coords.longitude;
+		
+		coords	= lat + ', ' + longitude;
+		alert(coords);
+};
+function getZip() {
+	alert("hello");
+	if(coords == 0){
+		$('#myModal_getZip').modal({
+			backdrop: 'static',
+			keyboard: false
+		});
+	}
+};
+function loading(){
+	$('#myModal_Loading').modal({
+		backdrop: 'static',
+		keyboard: false
+	});
+}
+function getCoords(){
+	navigator.geolocation.getCurrentPosition(c);
+	
+	return false;
+}
+
+//window.onload=getCoords();
 $(document).ready(function() {
 	$.getJSON( "restaurants.txt", function(data) {
 		businesses = data.businesses;
 		showbusiness(0);
 	});
-	
+	/*$("#get_location").click (function(){
+		alert("called");
+		navigator.geolocation.getCurrentPosition(c);
+		return false;
+	});*/
+	window.onload=loading();
+	window.onload=getCoords();
 });	

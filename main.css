@@ -6,6 +6,20 @@
 .bizrating {
     display: inline;
 }
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
 .restaurant-stars { display:block; width:76px; height:20px; background:url('images/rating_default.jpg') no-repeat; }
 .restaurant-stars-rating { display:block; width:38px; height:20px; background:url('images/rating_stared.jpg') no-repeat; }
 .navbar-default {
@@ -61,7 +75,9 @@
 	background-color: #3a3736 !important;
 	border-color: #e18a27;	
 }
-
+.btn {
+	color: #ffffff;
+}
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: #ffffff;
@@ -73,4 +89,9 @@
     color: #ffffff;
     background-color: #e18a27;
   }
+}
+@media (min-width: 320px) {
+    body {
+        padding-bottom: 70px;
+    }
 }
