@@ -37,7 +37,6 @@ var c = function(position) {
 		alert(coords);
 };
 function getZip() {
-	alert("hello");
 	if(coords == 0){
 		$('#myModal_getZip').modal({
 			backdrop: 'static',
@@ -50,14 +49,29 @@ function loading(){
 		backdrop: 'static',
 		keyboard: false
 	});
-}
+};
 function getCoords(){
 	navigator.geolocation.getCurrentPosition(c);
 	
 	return false;
-}
+};
 
-//window.onload=getCoords();
+function zipInput () {
+	zip = $("#ZipCode").val().trim();
+	alert(zip);
+	if (zip == "")
+	{
+		alert("Please enter your Zip Code");
+	}
+	else
+	{
+		$('#myModal_getZip').modal('hide');
+	}
+}; 
+function trim (str) {
+	alert("im in");
+	return str.replace(/^\s+|\s+$/g, '');
+};
 $(document).ready(function() {
 	$.getJSON( "restaurants.txt", function(data) {
 		businesses = data.businesses;
