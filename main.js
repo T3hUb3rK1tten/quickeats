@@ -74,14 +74,11 @@ function getCheckbox(){
 	selected = chkArray.join(',') + ",";
 	
 	if(selected.length > 1){
-		checkboxSelect = selected;	
+		checkboxSelect = selected;
 	}
 }
 function getRadio(){
-	alert("im here");
-	radioSelect = $("input[distanceRadios]:checked").val();
-	alert($("input[distanceRadios]:checked").val());
-	
+	radioSelect = $("input:radio[name=distanceRadios]:checked").val();
 }
 
 $(document).ready(function() {
